@@ -1,35 +1,13 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="./components/create-atom-on-click.js"></script>
+    <script src="./components/drop-atom-on-click.js"></script>
   </head>
   <body>
-    <script>
-
-    AFRAME.registerComponent('create-atom-on-click', {
-      schema: {
-        event: {type: 'string', default: ''}
-      },
-
-      init: function () {
-        var data = this.data;
-        var el = this.el;
-        
-        this.createAtom = function () {
-          var camera = document.querySelector('a-camera');
-          var entity = document.createElement('a-sphere');
-          entity.setAttribute('position', '0 0 -3');
-          entity.setAttribute('radius', '0.5');
-          entity.setAttribute('color', '#AAA');
-          camera.appendChild(entity);
-        }
-
-        el.addEventListener('click', this.createAtom);
-      }
-    });
-    </script>
     <a-scene>
-        <a-box create-atom-on-click height="2" width="2" depth="0.1" color="#EF2D5E" opacity = "0.2" position="0 1 -4" opacity="0.5">
-        </a-box>
+      <a-box create-atom-on-click id="menu" visible="true" height="2" width="2" depth="0.1" color="#EF2D5E" opacity = "0.2" position="0 1 -4"></a-box>
+      <a-plane position="0 0 -4" rotation="-70 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
       <a-camera>
         <a-cursor></a-cursor>
       </a-camera>
