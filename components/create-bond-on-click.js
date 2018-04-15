@@ -46,17 +46,18 @@ AFRAME.registerComponent('create-bond-on-click', {
 
                 entity.setAttribute('aabb-collider', 'objects: #atom');
 
-                var intersecting_atom;
-                var sym;
+                
                 entity.addEventListener('hitstart', function () {
-                  intersecting_atom = entity.components['aabb-collider']['closestIntersectedEl'];
+                  var intersecting_atom = entity.components['aabb-collider']['closestIntersectedEl'];
                   entity.setAttribute('color', '#00FF00');
-                  sym = intersecting_atom.getAttribute('atom')['sym'];
+                  var sym = intersecting_atom.getAttribute('atom')['sym'];
                   intersecting_atom.setAttribute('atom', 'sym: ' + sym + '; radius: 0.5; color: #00FF00');
                 });
 
                 entity.addEventListener('hitend', function () {
+                  var intersecting_atom = entity.components['aabb-collider']['closestIntersectedEl'];
                   entity.setAttribute('color', '#AAA');
+                  var sym = intersecting_atom.getAttribute('atom')['sym'];
                   intersecting_atom.setAttribute('atom', 'sym: ' + sym + '; radius: 0.5; color: #AAA');
                 });
                 

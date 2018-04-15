@@ -11,7 +11,7 @@ AFRAME.registerComponent('drop-bond-on-click', {
         var camera = document.querySelector('a-camera');
         var bond = camera.querySelector('a-cylinder');
 
-        if (bond.getAttribute('color') != '#00FF00') {
+        if (bond.components['aabb-collider']['closestIntersectedEl'] == undefined) {
           return;
         }
 

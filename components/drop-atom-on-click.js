@@ -13,9 +13,9 @@ AFRAME.registerComponent('drop-atom-on-click', {
         var camera = document.querySelector('a-camera');
         var atom = camera.querySelector('a-entity');
 
-        if (atom.getAttribute('color') != '#00FF00') {
+        if (atom.components['aabb-collider']['closestIntersectedEl'] == undefined) {
             return;
-          }
+        }
 
         var entity = document.createElement('a-entity');
         entity.setAttribute('atom', 'sym: ' + data.sym +'; radius: ' + data.radius + '; color: ' + data.color);
@@ -55,6 +55,7 @@ AFRAME.registerComponent('drop-atom-on-click', {
         if (atom.getAttribute('color') != '#00FF00') {
             return;
         }
+
         menu.setAttribute('create-atom-buttons', '');
         menu.setAttribute('create-bond-buttons', '');
         menu.setAttribute('id', 'menu');
@@ -66,6 +67,7 @@ AFRAME.registerComponent('drop-atom-on-click', {
         menu.setAttribute('position', '0 1 -4');
         scene.appendChild(menu);
       }
+
       el.addEventListener('click', this.dropAtom);
       el.addEventListener('click', this.createNewMenu);      
     }
