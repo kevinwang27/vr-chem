@@ -46,6 +46,8 @@ AFRAME.registerComponent('atom', {
             menu.setAttribute('id', 'menu');
             menu.setAttribute('height', '5');
             menu.setAttribute('width', '3');
+            menu.setAttribute('height', '5.2');
+            menu.setAttribute('width', '4.5');
             menu.setAttribute('depth', '0.1');
             menu.setAttribute('color', '#EF2D5E');
             menu.setAttribute('opacity', '0.2');
@@ -124,6 +126,22 @@ AFRAME.registerComponent('atom', {
           entityCl.setAttribute('position', '0 0 0.1');
           entityCl.setAttribute('color', '#000');
           elem5.appendChild(entityCl);
+
+          var elem6 = document.createElement('a-box');
+          elem6.setAttribute('create-atom-on-click', 'sym: Br; radius: 0.7; color: #AAA');
+          elem6.setAttribute('position', '1 0 0');
+          elem6.setAttribute('depth', '0.1');
+          elem6.setAttribute('color', '#EF2D5E');
+          menu.appendChild(elem6);
+          var entityBr = document.createElement('a-text');
+          entityBr.setAttribute('value', 'Br');
+          entityBr.setAttribute('align', 'center');
+          entityBr.setAttribute('position', '0 0 0.1');
+          entityBr.setAttribute('color', '#000');
+          elem6.appendChild(entityBr);
+
+          // el.addEventListener('click', hideMenu);
+        }();
       }
     };
 
