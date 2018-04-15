@@ -13,8 +13,9 @@ AFRAME.registerComponent('atom', {
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     el.setObject3D('mesh', this.mesh);
 
-    // let pos = el.object3D.position.x + ' ' + el.object3D.position.y + ' ' + (el.object3D.position.z);
-    let html = '<a-text value="' + data.sym + '" align="center" color="#000" position="0 0 ' + data.radius +'" wrap-count="5"></a-text>';
+    let cam = document.querySelector('camera');
+    let pos = el.object3D.position.x + ' ' + el.object3D.position.y + ' ' + (el.object3D.position.z);
+    let html = '<a-text value="' + data.sym + '" align="center" color="#000" position="0 0 ' + data.radius +'" wrap-count="40"></a-text>';
     el.innerHTML = html;
   }
 })
