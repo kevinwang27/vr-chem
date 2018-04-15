@@ -1,30 +1,31 @@
-AFRAME.registerComponent('create-atom-on-click', {
+AFRAME.registerComponent('create-bond-on-click', {
       schema: {},
 
       init: function () {
         var el = this.el;
 
-        this.createAtom = function () {
+        this.createBond = function () {
           var camera = document.querySelector('a-camera');
-          var entity = document.createElement('a-sphere');
-          entity.setAttribute('drop-atom-on-click', '');
+          var entity = document.createElement('a-cylinder');
+          entity.setAttribute('drop-bond-on-click', '');
           entity.setAttribute('position', '0 0 -3');
-          entity.setAttribute('radius', '0.5');
+          entity.setAttribute('height', '3');
+          entity.setAttribute('radius', '0.1')
           entity.setAttribute('color', '#AAA');
           camera.appendChild(entity);
         }
 
         this.hideMenu = function () {
-          var menu = document.querySelector('#atom-menu');
+          var menu = document.querySelector('#bond-menu');
           menu.setAttribute('visible', false);
         }
 
         this.showMenu = function () {
-          var menu = document.querySelector('#atom-menu');
+          var menu = document.querySelector('#bond-menu');
           menu.setAttribute('visible', true);
         }
 
-        el.addEventListener('click', this.createAtom);
+        el.addEventListener('click', this.createBond);
         el.addEventListener('click', this.hideMenu);
         el.addEventListener('show-menu', this.showMenu);
       }
