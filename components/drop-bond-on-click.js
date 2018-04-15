@@ -1,20 +1,27 @@
 AFRAME.registerComponent('drop-bond-on-click', {
-    schema: {},
+    schema: {
+        orientation: {type: 'string'}
+    },
 
     init: function () {
-      var el = this.el;
-      this.dropBond = function (event) {
+        var data = this.data;
+        var el = this.el;
+        this.dropBond = function (event) {
         var scene = document.querySelector('a-scene');
         var camera = document.querySelector('a-camera');
         var bond = camera.querySelector('a-cylinder');
 
         var entity = document.createElement('a-cylinder');
         entity.setAttribute('position', event.detail.intersection.point);
-        entity.setAttribute('height', '1')
         entity.setAttribute('radius', '0.1');
+        entity.setAttribute('height', '3');
+        if (data.orientation == 'horizontal') {
+            entity.setAttribute('rotation', '0 0 90');
+        }
         entity.setAttribute('color', '#AAA');
         scene.appendChild(entity);
         camera.removeChild(bond);
+
       }
 
       this.createNewMenu = function () {
@@ -23,8 +30,8 @@ AFRAME.registerComponent('drop-bond-on-click', {
         menu.setAttribute('create-atom-buttons', '');
         menu.setAttribute('create-bond-buttons', '');
         menu.setAttribute('id', 'menu');
-        menu.setAttribute('height', '5');
-        menu.setAttribute('width', '3');
+        menu.setAttribute('height', '5.2');
+        menu.setAttribute('width', '4.5');
         menu.setAttribute('depth', '0.1');
         menu.setAttribute('color', '#EF2D5E');
         menu.setAttribute('opacity', '0.2');
