@@ -28,15 +28,18 @@ AFRAME.registerComponent('atom', {
       el.setAttribute('scale', '1 1 1');
     });
     el.addEventListener('click', function () {
-      document.querySelectorAll('.atom').forEach(function(atom) {
-        atom.emit('i_hear_click');
-      })
-      selected = true;
-      el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: #ffff00');
-      console.log('clicked');
+      if (selected) {
+        selected = false;
+        el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: ' + defaultColor);
+      } else {
+        document.querySelectorAll('.atom').forEach(function(atom) {
+          atom.emit('i_hear_click');
+        });
+        selected = true;
+        el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: #ffff00');
+      }
     });
     el.addEventListener('i_hear_click', function () {
-      console.log(selected);
       if (selected) {
         selected = false;
         el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: ' + defaultColor);
@@ -44,6 +47,7 @@ AFRAME.registerComponent('atom', {
     });
   },
   update: function (oldData) {
+    // console.log(document.querySelector('a-camera').object3D.position.y);
     let data = this.data;
     this.el.getObject3D('mesh').material = new THREE.MeshStandardMaterial({color: data.color});
     // let html = '<a-text value="' + data.sym + '" align="center" color="#000" position="0 0 ' + data.radius +'" wrap-count="40"></a-text>';
