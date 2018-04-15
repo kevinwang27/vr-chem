@@ -15,17 +15,12 @@ AFRAME.registerComponent('create-atom-on-click', {
         }
 
         this.hideMenu = function () {
+          var scene = document.querySelector('a-scene');
           var menu = document.querySelector('#menu');
-          menu.setAttribute('visible', false);
-        }
-
-        this.showMenu = function () {
-          var menu = document.querySelector('#menu');
-          menu.setAttribute('visible', true);
+          scene.removeChild(menu);
         }
 
         el.addEventListener('click', this.createAtom);
         el.addEventListener('click', this.hideMenu);
-        el.addEventListener('show-menu', this.showMenu);
       }
     });
