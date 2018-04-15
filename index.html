@@ -5,25 +5,31 @@
   <body>
     <a-scene>
         <a-box height="5" width="5" depth="0.1" color="#EF2D5E" opacity = "0.2" position="0 1 -4" opacity="0.5">
-          <a-text value="9999" color="#000" wrap-count="20" position="-2 2 0" change-color-on-click="color: blue"></a-text>
-          <a-text value="9998" color="#000" wrap-count="20" position="-2 1.5 0" change-color-on-click="color: blue"></a-text>
-          <a-text value="9997" color="#000" wrap-count="20" position="-2 1 0" change-color-on-click="color: blue"></a-text>
-          <a-text value="9996" color="#000" wrap-count="20" position="-2 0.5 0" change-color-on-click="color: blue"></a-text>
-          <a-text value="9995" color="#000" wrap-count="20" position="-2 0 0" change-color-on-click="color: blue"></a-text>
+          <a-text value="Create Atom" color="#000" wrap-count="20" position="-2 2 0" create-atom-on-click></a-text>
         </a-box>
       <a-plane color='red' rotation="-90 0 0"
          width="100" height="100"></a-plane>
     </a-scene>
-
+    <a-camera><a-cursor></a-cursor></a-camera>
     <script>
-      const createAtom = function() {
-        const scene = document.querySelector('a-scene');
-        var entity = document.createElement('a-sphere');
-        entity.setAttribute('position', '-5 0 -3');
-        entity.setAttribute('radius', '1.25');
-        entity.setAttribute('color', '#AAA');
-        scene.appendChild(entity);
+
+    AFRAME.registerComponent('create-atom-on-click', {
+      schema: {},
+
+      init: function () {
+        var el = this.el;  // <a-box>
+        this.eventHandlerFn = function () {
+          const scene = document.querySelector('a-scene');
+          var entity = document.createElement('a-sphere');
+          entity.setAttribute('position', '-5 0 -3');
+          entity.setAttribute('radius', '1.25');
+          entity.setAttribute('color', '#AAA');
+          scene.appendChild(entity);
+        }
+
+        el.addEventListener('click', this.eventHandlerFn);
       }
+    });
     </script>
   </body>
 </html>
