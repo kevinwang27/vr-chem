@@ -36,9 +36,9 @@ AFRAME.registerComponent('atom', {
     });
     el.addEventListener('click', function () {
       if (selected) {
+        hideMenu();
         selected = false;
         el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: ' + defaultColor);
-        hideMenu();
       } else {
         document.querySelectorAll('.atom').forEach(function(atom) {
           atom.emit('i_hear_click');
@@ -55,8 +55,8 @@ AFRAME.registerComponent('atom', {
             menu.setAttribute('create-atom-buttons', '');
             menu.setAttribute('create-bond-buttons', '');
             menu.setAttribute('id', 'menu');
-            menu.setAttribute('height', '5');
-            menu.setAttribute('width', '3');
+            menu.setAttribute('height', '5.2');
+            menu.setAttribute('width', '4.5');
             menu.setAttribute('depth', '0.1');
             menu.setAttribute('color', '#EF2D5E');
             menu.setAttribute('opacity', '0.2');
@@ -155,9 +155,9 @@ AFRAME.registerComponent('atom', {
     });
     el.addEventListener('i_hear_click', function () {
       if (selected) {
+        hideMenu();
         selected = false;
         el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: ' + defaultColor);
-        hideMenu();
       }
     });
   },
