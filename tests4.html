@@ -4,27 +4,11 @@
     <title>Event Set for Interactions - A-Frame</title>
     <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
-    <script type="text/javascript">
-      AFRAME.registerComponent('atom', {
-        schema: {
-          radius: {type: 'number', default: 1},
-          color: {type: 'color', default: '#AAA'}
-        },
-        init: function () {
-          var data = this.data;
-          var el = this.el;
-
-          this.geometry = new THREE.SphereBufferGeometry(data.radius, 32, 32);
-          this.material = new THREE.MeshStandardMaterial({color: data.color});
-          this.mesh = new THREE.Mesh(this.geometry, this.material);
-          el.setObject3D('mesh', this.mesh);
-        }
-      })
-    </script>
+    <script src="components/atom.js"></script>
   </head>
   <body>
     <a-scene>
-      <a-entity atom="radius: 3" position="0 0 -5"></a-entity>
+      <a-entity atom="sym: C; radius: 3; color: #AAA" position="0 0 -5"></a-entity>
     </a-scene>
   </body>
 </html>
