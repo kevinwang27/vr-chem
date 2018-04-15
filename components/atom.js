@@ -55,8 +55,8 @@ AFRAME.registerComponent('atom', {
             menu.setAttribute('create-atom-buttons', '');
             menu.setAttribute('create-bond-buttons', '');
             menu.setAttribute('id', 'menu');
-            menu.setAttribute('height', '5');
-            menu.setAttribute('width', '3');
+            menu.setAttribute('height', '5.2');
+            menu.setAttribute('width', '4.5');
             menu.setAttribute('depth', '0.1');
             menu.setAttribute('color', '#EF2D5E');
             menu.setAttribute('opacity', '0.2');

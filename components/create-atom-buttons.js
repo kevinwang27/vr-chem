@@ -8,7 +8,6 @@ AFRAME.registerComponent('create-atom-buttons', {
             var menu = document.querySelector('#menu');
 
             var atomlabel = document.createElement('a-box');
-            atomlabel.setAttribute('create-atom-on-click', 'sym: H; radius: 0.3; color: #AAA');
             atomlabel.setAttribute('position', '0 2.1 0');
             atomlabel.setAttribute('width', '2');
             atomlabel.setAttribute('height', '0.7')
