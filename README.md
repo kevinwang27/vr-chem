@@ -1,5 +1,5 @@
 # vr-chem
-SodaHacks project 2018 - VR organic chemistry visualizer!
+SodaHacks 2nd place winner 2018! - VR organic chemistry visualizer!
 
 ## How to use
 
