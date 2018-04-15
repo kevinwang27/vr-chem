@@ -21,17 +21,18 @@ AFRAME.registerComponent('drop-atom-on-click', {
       }
 
       this.createNewMenu = function () {
-        var scene = document.querySelector('a-scene');
-        var menu = document.createElement('a-box');
-        menu.setAttribute('create-atom-button', '');
-        menu.setAttribute('id', 'menu');
-        menu.setAttribute('height', '5');
-        menu.setAttribute('width', '3');
-        menu.setAttribute('depth', '0.1');
-        menu.setAttribute('color', '#EF2D5E');
-        menu.setAttribute('opacity', '0.2');
-        menu.setAttribute('position', '0 1 -4');
-        scene.appendChild(menu);
+          var scene = document.querySelector('a-scene');
+          var menu = document.createElement('a-box');
+          menu.setAttribute('create-atom-buttons', '');
+          menu.setAttribute('create-bond-buttons', '');
+          menu.setAttribute('id', 'menu');
+          menu.setAttribute('height', '5');
+          menu.setAttribute('width', '3');
+          menu.setAttribute('depth', '0.1');
+          menu.setAttribute('color', '#EF2D5E');
+          menu.setAttribute('opacity', '0.2');
+          menu.setAttribute('position', '0 1 -4');
+          scene.appendChild(menu);
       }
       el.addEventListener('click', this.dropAtom);
       el.addEventListener('click', this.createNewMenu);
