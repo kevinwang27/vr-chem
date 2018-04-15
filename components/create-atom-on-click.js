@@ -12,7 +12,7 @@ AFRAME.registerComponent('create-atom-on-click', {
         this.createAtom = function () {
           var camera = document.querySelector('a-camera');
           var entity = document.createElement('a-entity');
-          entity.setAttribute('drop-atom-on-click', '');
+          entity.setAttribute('drop-atom-on-click', 'sym: ' + data.sym +'; radius: ' + data.radius + '; color: ' + data.color);
           entity.setAttribute('atom', 'sym: ' + data.sym +'; radius: ' + data.radius + '; color: ' + data.color);
           entity.setAttribute('position', '0 0 -3');
           camera.appendChild(entity);
