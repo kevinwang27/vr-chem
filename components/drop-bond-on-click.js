@@ -38,8 +38,8 @@ AFRAME.registerComponent('drop-bond-on-click', {
         menu.setAttribute('position', '0 1 -4');
         scene.appendChild(menu);
       }
-
       el.addEventListener('click', this.dropBond);
       el.addEventListener('click', this.createNewMenu);
+      
     }
   });
