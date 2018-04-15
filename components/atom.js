@@ -1,9 +1,3 @@
-var hideMenu = function () {
-  var scene = document.querySelector('a-scene');
-  var menu = document.querySelector('#menu');
-  scene.removeChild(menu);
-}
-
 AFRAME.registerComponent('atom', {
   schema: {
     sym: {type: 'string'},
@@ -23,22 +17,17 @@ AFRAME.registerComponent('atom', {
 
     el.setAttribute('class', 'atom');
 
-    // let pos = el.object3D.position.x + ' ' + el.object3D.position.y + ' ' + (el.object3D.position.z);
-    // let rota = '0 ' + (180/Math.PI * (2*Math.PI - Math.atan(el.object3D.position.z/el.object3D.position.x))) + ' 0';
-    let html = '<a-text value="' + data.sym + '" align="center" color="#000" position="0 0 ' + data.radius +'" wrap-count="40"></a-text>';
-    el.innerHTML = html;
-
-    el.addEventListener('mouseenter', function () {
-      el.setAttribute('scale', '1.1 1.1 1.1');
-    });
-    el.addEventListener('mouseleave', function () {
-      el.setAttribute('scale', '1 1 1');
-    });
-    el.addEventListener('click', function () {
+    this.i_hear_click_fn = function () {
       if (selected) {
         selected = false;
         el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: ' + defaultColor);
-        hideMenu();
+      }
+    };
+
+    this.click_fn = function () {
+      if (selected) {
+        selected = false;
+        el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: ' + defaultColor);
       } else {
         document.querySelectorAll('.atom').forEach(function(atom) {
           atom.emit('i_hear_click');
@@ -135,31 +124,21 @@ AFRAME.registerComponent('atom', {
           entityCl.setAttribute('position', '0 0 0.1');
           entityCl.setAttribute('color', '#000');
           elem5.appendChild(entityCl);
-
-          var elem6 = document.createElement('a-box');
-          elem6.setAttribute('create-atom-on-click', 'sym: Br; radius: 0.7; color: #AAA');
-          elem6.setAttribute('position', '1 0 0');
-          elem6.setAttribute('depth', '0.1');
-          elem6.setAttribute('color', '#EF2D5E');
-          menu.appendChild(elem6);
-          var entityBr = document.createElement('a-text');
-          entityBr.setAttribute('value', 'Br');
-          entityBr.setAttribute('align', 'center');
-          entityBr.setAttribute('position', '0 0 0.1');
-          entityBr.setAttribute('color', '#000');
-          elem6.appendChild(entityBr);
-
-          // el.addEventListener('click', hideMenu);
-        }();
       }
+    };
+
+    // let pos = el.object3D.position.x + ' ' + el.object3D.position.y + ' ' + (el.object3D.position.z);
+    let html = '<a-text value="' + data.sym + '" align="center" color="#000" position="0 0 ' + data.radius +'" wrap-count="40"></a-text>';
+    el.innerHTML = html;
+
+    el.addEventListener('mouseenter', function () {
+      el.setAttribute('scale', '1.1 1.1 1.1');
     });
-    el.addEventListener('i_hear_click', function () {
-      if (selected) {
-        selected = false;
-        el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: ' + defaultColor);
-        hideMenu();
-      }
+    el.addEventListener('mouseleave', function () {
+      el.setAttribute('scale', '1 1 1');
     });
+    //el.addEventListener('click', this.click_fn);
+    //el.addEventListener('i_hear_click', this.i_hear_click_fn);
   },
   update: function (oldData) {
     // console.log(document.querySelector('a-camera').object3D.position.y);
