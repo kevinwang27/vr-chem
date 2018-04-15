@@ -52,10 +52,6 @@ AFRAME.registerComponent('drop-atom-on-click', {
         var camera = document.querySelector('a-camera');
         var atom = camera.querySelector('#atom');
 
-        if (atom.getAttribute('color') != '#00FF00') {
-            return;
-        }
-
         menu.setAttribute('create-atom-buttons', '');
         menu.setAttribute('create-bond-buttons', '');
         menu.setAttribute('id', 'menu');
