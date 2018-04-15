@@ -20,6 +20,7 @@ AFRAME.registerComponent('create-atom-buttons', {
             menu.appendChild(elem1);
             var entityH = document.createElement('a-text');
             entityH.setAttribute('value', 'H');
+            entityH.setAttribute('position', '0 0 1');
             elem1.appendChild(entityH);
 
             var elem2 = document.createElement('a-box');
