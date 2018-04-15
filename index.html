@@ -1,6 +1,25 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script>
+        AFRAME.registerComponent('create-atom-on-click', {
+          schema: {},
+          init: function () {
+            var el = this.el;  // <a-box>
+            this.eventHandlerFn = function () {
+              console.log('clicked');
+              var scene = document.querySelector('a-scene');
+              var entity = document.createElement('a-sphere');
+              entity.setAttribute('position', '0 0 -3');
+              entity.setAttribute('radius', '1.25');
+              entity.setAttribute('color', '#EF2D5E');
+              scene.appendChild(entity);
+            }
+
+            el.addEventListener('click', this.eventHandlerFn);
+          }
+        });
+    </script>
   </head>
   <body>
     <a-scene>
@@ -10,25 +29,5 @@
         <a-cylinder color='blue' height="6" radius="0.1" position="0 0 -5"></a-cylinder>
         <a-camera><a-cursor></a-cursor></a-camera>
     </a-scene>
-    <script>
-        AFRAME.registerComponent('create-atom-on-click', {
-          schema: {},
-          init: function () {
-            console.log('attached');
-            var el = this.el;  // <a-box>
-            this.eventHandlerFn = function () {
-              console.log('clicked');
-              var scene = document.querySelector('a-scene');
-              var entity = document.createElement('a-sphere');
-              entity.setAttribute('position', '0 0 3');
-              entity.setAttribute('radius', '1.25');
-              entity.setAttribute('color', '#EF2D5E');
-              scene.appendChild(entity);
-            }
-
-            el.addEventListener('click', function () {console.log('click')});
-          }
-        });
-    </script>
   </body>
 </html>
