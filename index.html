@@ -7,7 +7,6 @@
         <a-box create-atom-on-click height="5" width="5" depth="0.1" color="#EF2D5E" opacity = "0.2" position="0 1 -4" opacity="0.5">
           <a-text value="Create Atom" color="#000" wrap-count="20" position="-2 2 0" create-atom-on-click></a-text>
         </a-box>
-        <a-plane color='red' rotation="-90 0 0" width="100" height="100"></a-plane>
         <a-cylinder color='blue' height="6" radius="0.1" position="0 0 -5"></a-cylinder>
         <a-camera><a-cursor></a-cursor></a-camera>
     </a-scene>
@@ -15,18 +14,19 @@
         AFRAME.registerComponent('create-atom-on-click', {
           schema: {},
           init: function () {
+            console.log('attached');
             var el = this.el;  // <a-box>
             this.eventHandlerFn = function () {
               console.log('clicked');
-              const scene = document.querySelector('a-scene');
+              var scene = document.querySelector('a-scene');
               var entity = document.createElement('a-sphere');
-              entity.setAttribute('position', (Math.random() * -10) + ' 0 ' + (Math.random() * -10));
+              entity.setAttribute('position', '0 0 3');
               entity.setAttribute('radius', '1.25');
-              entity.setAttribute('color', '#AAA');
+              entity.setAttribute('color', '#EF2D5E');
               scene.appendChild(entity);
             }
 
-            el.addEventListener('click', this.eventHandlerFn);
+            el.addEventListener('click', function () {console.log('click')});
           }
         });
     </script>
