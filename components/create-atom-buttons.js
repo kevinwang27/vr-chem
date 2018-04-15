@@ -7,6 +7,13 @@ AFRAME.registerComponent('create-atom-buttons', {
             var scene = document.querySelector('a-scene');
             var menu = document.querySelector('#menu');
 
+            var atomlabel = document.createElement('a-box');
+            atomlabel.setAttribute('position', '0 2.1 0');
+            atomlabel.setAttribute('width', '2');
+            atomlabel.setAttribute('height', '0.7')
+            atomlabel.setAttribute('depth', '0.1');
+            atomlabel.setAttribute('color', '#F6E837');
+            menu.appendChild(atomlabel);
             var head = document.createElement('a-text');
             head.setAttribute('value', 'add atom');
             head.setAttribute('align', 'center');
