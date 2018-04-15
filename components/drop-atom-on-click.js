@@ -9,9 +9,8 @@ AFRAME.registerComponent('drop-atom-on-click', {
         var atom = camera.querySelector('a-entity');
 
         var entity = document.createElement('a-entity');
-        entity.setAttribute('drop-atom-on-click', '');
         entity.setAttribute('atom', 'sym: C; radius: 0.5; color: #AAA');
-        entity.setAttribute('position', '0 0 -3');
+        entity.setAttribute('position', event.detail.intersection.point);
         scene.appendChild(entity);
         camera.removeChild(atom);
       }

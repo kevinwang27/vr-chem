@@ -9,7 +9,7 @@ AFRAME.registerComponent('create-bond-on-click', {
           var entity = document.createElement('a-cylinder');
           entity.setAttribute('drop-bond-on-click', '');
           entity.setAttribute('position', '0 0 -3');
-          entity.setAttribute('height', '3');
+          entity.setAttribute('height', '1');
           entity.setAttribute('radius', '0.1')
           entity.setAttribute('color', '#AAA');
           camera.appendChild(entity);
