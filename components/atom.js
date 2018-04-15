@@ -25,13 +25,12 @@ AFRAME.registerComponent('atom', {
     });
     el.addEventListener('click', function () {
       el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: #ffff00');
-      // add menu change atom
+      console.log('clicked');
     });
   },
   update: function (oldData) {
     let data = this.data;
+    let el = this.el;
     el.getObject3D('mesh').material = new THREE.MeshStandardMaterial({color: data.color});
-    let html = '<a-text value="' + data.sym + '" align="center" color="#000" position="0 0 ' + data.radius +'" wrap-count="40"></a-text>';
-    el.innerHTML = html;
   }
 });
