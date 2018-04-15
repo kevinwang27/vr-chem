@@ -19,7 +19,6 @@ AFRAME.registerComponent('drop-atom-on-click', {
         scene.appendChild(entity);
         camera.removeChild(atom);
       }
-
       this.createNewMenu = function () {
         var scene = document.querySelector('a-scene');
         var menu = document.createElement('a-box');
@@ -36,5 +35,6 @@ AFRAME.registerComponent('drop-atom-on-click', {
       }
       el.addEventListener('click', this.dropAtom);
       el.addEventListener('click', this.createNewMenu);
+      
     }
   });
