@@ -33,7 +33,7 @@ AFRAME.registerComponent('atom', {
       })
       selected = true;
       el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: #ffff00');
-      // add menu change atom
+      console.log('clicked');
     });
     el.addEventListener('i_hear_click', function () {
       console.log(selected);

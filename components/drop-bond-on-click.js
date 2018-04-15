@@ -20,14 +20,15 @@ AFRAME.registerComponent('drop-bond-on-click', {
       this.createNewMenu = function () {
         var scene = document.querySelector('a-scene');
         var menu = document.createElement('a-box');
-        menu.setAttribute('create-bond-on-click', '');
-        menu.setAttribute('id', 'bond-menu');
-        menu.setAttribute('height', '2');
-        menu.setAttribute('width', '2');
+        menu.setAttribute('create-atom-buttons', '');
+        menu.setAttribute('create-bond-buttons', '');
+        menu.setAttribute('id', 'menu');
+        menu.setAttribute('height', '5');
+        menu.setAttribute('width', '3');
         menu.setAttribute('depth', '0.1');
-        menu.setAttribute('color', '#FFF145');
+        menu.setAttribute('color', '#EF2D5E');
         menu.setAttribute('opacity', '0.2');
-        menu.setAttribute('position', '2 1 -4');
+        menu.setAttribute('position', '0 1 -4');
         scene.appendChild(menu);
       }
 

@@ -17,7 +17,7 @@ AFRAME.registerComponent('create-bond-on-click', {
 
         this.hideMenu = function () {
           var scene = document.querySelector('a-scene');
-          var menu = document.querySelector('#bond-menu');
+          var menu = document.querySelector('#menu');
           scene.removeChild(menu);
         }
 

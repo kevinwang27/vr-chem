@@ -5,13 +5,14 @@
     <script src="./components/drop-atom-on-click.js"></script>
     <script src="./components/create-bond-on-click.js"></script>
     <script src="./components/drop-bond-on-click.js"></script>
+    <script src="./components/create-atom-buttons.js"></script>
+    <script src="./components/create-bond-buttons.js"></script>
     <script src="./components/atom.js"></script>
   </head>
   <body>
     <a-scene>
-        <a-box create-bond-on-click id="bond-menu" visible="true" height="2" width="2" depth="0.1" color="#FFF145" opacity = "0.2" position="2 1 -4"></a-box>
-        <a-box create-atom-on-click id="atom-menu" visible="true" height="2" width="2" depth="0.1" color="#EF2D5E" opacity = "0.2" position="0 1 -4"></a-box>
-        <a-entity drop-atom-on-click atom="sym: C; radius: 0.5; color: #AAA" position="0 0 -3"></a-entity>
+        <a-box create-atom-buttons create-bond-buttons id="menu" height="5" width="3" depth="0.1" color="#EF2D5E" opacity = "0.2" position="0 1 -4"></a-box>
+        <a-plane position="0 0 -4" rotation="-70 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
         <a-camera>
           <a-cursor></a-cursor>
         </a-camera>
