@@ -13,10 +13,21 @@ AFRAME.registerComponent('drop-atom-on-click', {
         var camera = document.querySelector('a-camera');
         var atom = camera.querySelector('a-entity');
 
+        if (atom.getAttribute('color') != '#00FF00') {
+            return;
+          }
+
         var entity = document.createElement('a-entity');
         entity.setAttribute('atom', 'sym: ' + data.sym +'; radius: ' + data.radius + '; color: ' + data.color);
-        var pos = atom.components['aabb-collider']['closestIntersectedEl'].getAttribute('position');
-        entity.setAttribute('position', pos.x + ' ' + (pos.y + 0.75) + ' ' + pos.z);
+        var bond = atom.components['aabb-collider']['closestIntersectedEl'];
+        var pos = bond.getAttribute('position');
+        var ver = bond.is('ver');
+        if (ver) {
+            entity.setAttribute('position', pos.x + ' ' + (pos.y + 0.75) + ' ' + pos.z);
+        } else {
+            entity.setAttribute('position', (pos.x + 0.75) + ' ' + pos.y + ' ' + pos.z);
+        }
+        
         entity.setAttribute('id', 'atom');
         entity.setAttribute('aabb-collider', 'objects: a-cylinder');
 
@@ -38,6 +49,12 @@ AFRAME.registerComponent('drop-atom-on-click', {
       this.createNewMenu = function () {
         var scene = document.querySelector('a-scene');
         var menu = document.createElement('a-box');
+        var camera = document.querySelector('a-camera');
+        var atom = camera.querySelector('#atom');
+
+        if (atom.getAttribute('color') != '#00FF00') {
+            return;
+        }
         menu.setAttribute('create-atom-buttons', '');
         menu.setAttribute('create-bond-buttons', '');
         menu.setAttribute('id', 'menu');

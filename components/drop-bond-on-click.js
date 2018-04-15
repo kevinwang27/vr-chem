@@ -11,22 +11,31 @@ AFRAME.registerComponent('drop-bond-on-click', {
         var camera = document.querySelector('a-camera');
         var bond = camera.querySelector('a-cylinder');
 
-        if (bond.getAttribute('color') !== '#00FF00') {
+        if (bond.getAttribute('color') != '#00FF00') {
           return;
         }
 
         var entity = document.createElement('a-cylinder');
         var pos = bond.components['aabb-collider']['closestIntersectedEl'].getAttribute('position');
         var finalPos;
-        if (bond.getAttribute('position').y < pos.y) {
-          finalPos = pos.x + ' ' + pos.y - 0.75 + ' ' + pos.z;
+        if (data.orientation == 'horizontal') {
+          entity.addState('hor');
+        if (Math.random() > .5) {
+          finalPos = (pos.x - 0.75) + ' ' + pos.y + ' ' + pos.z;
         } else {
-          finalPos = pos.x + ' ' + pos.y + 0.75 + ' ' + pos.z;
+          finalPos = (pos.x + 0.75) + ' ' + pos.y + ' ' + pos.z;
         }
+      } else {
+        entity.addState('ver');
+        if (Math.random() > .5) {
+          finalPos = pos.x + ' ' + (pos.y + 0.75) + ' ' + pos.z;
+        } else {
+          finalPos = pos.x + ' ' + (pos.y - 0.75) + ' ' + pos.z;
+        }
+      }
         entity.setAttribute('position', finalPos);
         entity.setAttribute('height', '1');
         entity.setAttribute('radius', '0.1');
-        entity.setAttribute('height', '3');
         if (data.orientation == 'horizontal') {
             entity.setAttribute('rotation', '0 0 90');
         }
@@ -58,7 +67,7 @@ AFRAME.registerComponent('drop-bond-on-click', {
         var camera = document.querySelector('a-camera');
         var bond = camera.querySelector('a-cylinder');
 
-        if (bond.getAttribute('color') !== '#00FF00') {
+        if (bond.getAttribute('color') != '#00FF00') {
           return;
         }
 

@@ -18,14 +18,15 @@ AFRAME.registerComponent('create-atom-on-click', {
           entity.setAttribute('id', 'atom');
           entity.setAttribute('position', '0 0 -3');
 
-          var intersecting_bond;
+          
           entity.addEventListener('hitstart', function () {
-            intersecting_bond = entity.components['aabb-collider']['closestIntersectedEl'];
+            var intersecting_bond = entity.components['aabb-collider']['closestIntersectedEl'];
             entity.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: #00FF00');
             intersecting_bond.setAttribute('color', '#00FF00');
           });
   
           entity.addEventListener('hitend', function () {
+            var intersecting_bond = entity.components['aabb-collider']['closestIntersectedEl'];
             entity.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: #AAA');
             intersecting_bond.setAttribute('color', '#AAA');
           });
