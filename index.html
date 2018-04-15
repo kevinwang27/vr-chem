@@ -6,23 +6,24 @@
     <script>
 
     AFRAME.registerComponent('create-atom-on-click', {
-      schema: {},
+      schema: {
+        event: {type: 'string', default: ''}
+      },
 
       init: function () {
-        var el = this.el;  // <a-box>
-        this.eventHandlerFn = function () {
-          console.log('clicked');
+        var data = this.data;
+        var el = this.el;
+        
+        this.createAtom = function () {
           var camera = document.querySelector('a-camera');
           var entity = document.createElement('a-sphere');
           entity.setAttribute('position', '0 0 -3');
           entity.setAttribute('radius', '0.5');
           entity.setAttribute('color', '#AAA');
           camera.appendChild(entity);
-
-          el.removeEventListener()
         }
 
-        el.addEventListener('click', this.eventHandlerFn);
+        el.addEventListener('click', this.createAtom);
       }
     });
     </script>
