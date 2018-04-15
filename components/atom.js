@@ -34,7 +34,6 @@ AFRAME.registerComponent('atom', {
         });
         selected = true;
         el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: #ffff00');
-<<<<<<< HEAD
         this.createTable = function() {
           this.createNewMenu = function () {
             var scene = document.querySelector('a-scene');
@@ -138,8 +137,6 @@ AFRAME.registerComponent('atom', {
 
           // el.addEventListener('click', hideMenu);
         }();
-=======
->>>>>>> 99eaa712a55163d2406f2c6fe148bcd8f9a6a7b4
       }
     };
 
