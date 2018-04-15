@@ -1,3 +1,9 @@
+var hideMenu = function () {
+  var scene = document.querySelector('a-scene');
+  var menu = document.querySelector('#menu');
+  scene.removeChild(menu);
+}
+
 AFRAME.registerComponent('atom', {
   schema: {
     sym: {type: 'string'},
@@ -17,14 +23,18 @@ AFRAME.registerComponent('atom', {
 
     el.setAttribute('class', 'atom');
 
-    this.i_hear_click_fn = function () {
-      if (selected) {
-        selected = false;
-        el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: ' + defaultColor);
-      }
-    };
+    // let pos = el.object3D.position.x + ' ' + el.object3D.position.y + ' ' + (el.object3D.position.z);
+    // let rota = '0 ' + (180/Math.PI * (2*Math.PI - Math.atan(el.object3D.position.z/el.object3D.position.x))) + ' 0';
+    let html = '<a-text value="' + data.sym + '" align="center" color="#000" position="0 0 ' + data.radius +'" wrap-count="40"></a-text>';
+    el.innerHTML = html;
 
-    this.click_fn = function () {
+    el.addEventListener('mouseenter', function () {
+      el.setAttribute('scale', '1.1 1.1 1.1');
+    });
+    el.addEventListener('mouseleave', function () {
+      el.setAttribute('scale', '1 1 1');
+    });
+    el.addEventListener('click', function () {
       if (selected) {
         hideMenu();
         selected = false;
@@ -36,6 +46,9 @@ AFRAME.registerComponent('atom', {
         selected = true;
         el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: #ffff00');
         this.createTable = function() {
+          if (document.querySelector('#menu') != null) {
+            hideMenu();
+          }
           this.createNewMenu = function () {
             var scene = document.querySelector('a-scene');
             var menu = document.createElement('a-box');
@@ -148,14 +161,6 @@ AFRAME.registerComponent('atom', {
           // el.addEventListener('click', hideMenu);
         }();
       }
-    };
-
-    // let pos = el.object3D.position.x + ' ' + el.object3D.position.y + ' ' + (el.object3D.position.z);
-    let html = '<a-text value="' + data.sym + '" align="center" color="#000" position="0 0 ' + data.radius +'" wrap-count="40"></a-text>';
-    el.innerHTML = html;
-
-    el.addEventListener('mouseenter', function () {
-      el.setAttribute('scale', '1.1 1.1 1.1');
     });
     el.addEventListener('i_hear_click', function () {
       if (selected) {
@@ -163,11 +168,7 @@ AFRAME.registerComponent('atom', {
         selected = false;
         el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: ' + defaultColor);
       }
-    el.addEventListener('mouseleave', function () {
-      el.setAttribute('scale', '1 1 1');
     });
-    //el.addEventListener('click', this.click_fn);
-    //el.addEventListener('i_hear_click', this.i_hear_click_fn);
   },
   update: function (oldData) {
     // console.log(document.querySelector('a-camera').object3D.position.y);
