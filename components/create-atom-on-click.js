@@ -3,7 +3,7 @@ AFRAME.registerComponent('create-atom-on-click', {
 
       init: function () {
         var el = this.el;
-        
+
         this.createAtom = function () {
           var camera = document.querySelector('a-camera');
           var entity = document.createElement('a-entity');
@@ -15,7 +15,7 @@ AFRAME.registerComponent('create-atom-on-click', {
 
         this.hideMenu = function () {
           var scene = document.querySelector('a-scene');
-          var menu = document.querySelector('#menu');
+          var menu = document.querySelector('#atom-menu');
           scene.removeChild(menu);
         }
 

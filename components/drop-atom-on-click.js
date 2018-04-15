@@ -20,7 +20,7 @@ AFRAME.registerComponent('drop-atom-on-click', {
         var scene = document.querySelector('a-scene');
         var menu = document.createElement('a-box');
         menu.setAttribute('create-atom-on-click', '');
-        menu.setAttribute('id', 'menu');
+        menu.setAttribute('id', 'atom-menu');
         menu.setAttribute('height', '2');
         menu.setAttribute('width', '2');
         menu.setAttribute('depth', '0.1');
