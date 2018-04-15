@@ -14,7 +14,13 @@ AFRAME.registerComponent('drop-bond-on-click', {
 
         var entity = document.createElement('a-cylinder');
         var pos = bond.components['aabb-collider']['closestIntersectedEl'].getAttribute('position');
-        entity.setAttribute('position', pos.x + ' ' + pos.y + 0.75 + ' ' + pos.z);
+        var finalPos;
+        if (bond.getAttribute('position').y < pos.y) {
+          finalPos = pos.x + ' ' + pos.y - 0.75 + ' ' + pos.z;
+        } else {
+          finalPos = pos.x + ' ' + pos.y + 0.75 + ' ' + pos.z;
+        }
+        entity.setAttribute('position', finalPos);
         entity.setAttribute('height', '1');
         entity.setAttribute('radius', '0.1');
         entity.setAttribute('color', '#AAA');
