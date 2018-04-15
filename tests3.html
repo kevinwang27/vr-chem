@@ -73,9 +73,11 @@
       
       <a-sky color="#ECECEC"></a-sky>
     </a-scene -->
-    <a-scene handle-events>
+    <!-- <a-scene handle-events> -->
+    <a-scene>
       <a-camera><a-cursor></a-cursor></a-camera>
-      <a-text id="atom-bank" value="click me!\n hi" align="center" color="#fff" visible="false" geometry="primitive: plane; height: 5; width: auto" material="color: #333"></a-text>
+      <!-- <a-text id="atom-bank" value="click me!\n hi" align="center" color="#fff" visible="false" geometry="primitive: plane; height: 5; width: auto" material="color: #333"></a-text> -->
+      <a-text id="atom-bank" value="click me!\n hi" align="center" color="#fff" geometry="primitive: sphere; radius: 5" material="color: #333" position="0 0 -5"></a-text>
     </a-scene>
   </body>
 </html>
