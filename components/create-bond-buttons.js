@@ -14,6 +14,7 @@ AFRAME.registerComponent('create-bond-buttons', {
             elem.setAttribute('width', '2');
             elem.setAttribute('color', '#EF2D5E');
             menu.appendChild(elem);
+            
             var head = document.createElement('a-text');
             head.setAttribute('value', 'add single bond');
             head.setAttribute('align', 'center');

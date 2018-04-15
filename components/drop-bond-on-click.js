@@ -3,14 +3,6 @@ AFRAME.registerComponent('drop-bond-on-click', {
 
     init: function () {
       var el = this.el;
-      var animation = document.createElement('a-animation');
-        animation.setAttribute('attribute', "rotation");
-        animation.setAttribute('dur', '1000');
-        animation.setAttribute('to', "0 0 90");
-        animation.setAttribute('begin', "mousedown");
-        animation.setAttribute('repeat', "indefinite");
-        console.log(el.rotation);
-        el.appendChild(animation);
       this.dropBond = function (event) {
         var scene = document.querySelector('a-scene');
         var camera = document.querySelector('a-camera');
