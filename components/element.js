@@ -1,7 +1,7 @@
 AFRAME.registerComponent('element', {
     schema: {
-        name: {type: 'string', default: 'X'}
-        radius: {type: 'number', default: 0}
+        name: {type: 'string', default: 'X'},
+        radius: {type: 'number', default: 0},
         color: {type: 'color', default: '#AAA'}
     },
 

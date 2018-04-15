@@ -13,10 +13,11 @@
       init: function () {
         var data = this.data;
         var el = this.el;
-        
+
         this.createAtom = function () {
           var camera = document.querySelector('a-camera');
           var entity = document.createElement('a-sphere');
+          entity.setAttribute('drop-atom-on-click', '');
           entity.setAttribute('position', '0 0 -3');
           entity.setAttribute('radius', '0.5');
           entity.setAttribute('color', '#AAA');
@@ -27,12 +28,38 @@
       }
     });
     </script>
+    <script>
+    AFRAME.registerComponent('drop-atom-on-click', {
+      schema: {
+        event: {type: 'string', default: ''}
+      },
+
+      init: function () {
+        var data = this.data;
+        var el = this.el;
+
+        this.dropatom = function () {
+          var camera = document.querySelector('a-camera');
+          var env = document.querySelector('a-scene');
+          var entity = document.createElement('a-sphere');
+          camera.removeChild('a-sphere');
+          entity.setAttribute('position', '0 0 3');
+          entity.setAttribute('radius', '0.5');
+          entity.setAttribute('color', '#AAA');
+          env.appendChild(entity);
+        }
+
+        el.addEventListener('click', this.dropatom);
+      }
+    });
+    </script>
     <a-scene>
         <a-box create-atom-on-click height="2" width="2" depth="0.1" color="#EF2D5E" opacity = "0.2" position="0 1 -4" opacity="0.5">
         </a-box>
-      <a-camera>
-        <a-cursor></a-cursor>
-      </a-camera>
+        <a-entity element="name: H; radius: 2; color: red" position="0 0 -3"></a-enitity>
+        <a-camera>
+            <a-cursor></a-cursor>
+        </a-camera>
     </a-scene>
   </body>
 </html>
