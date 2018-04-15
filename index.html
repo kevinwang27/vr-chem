@@ -10,8 +10,8 @@
   </head>
   <body>
     <a-scene>
-        <a-box id="menu" visible="true" height="2" width="2" depth="0.1" color="#EF2D5E" opacity = "0.2" position="0 1 -4">
-            <a-text create-periodic-table id="atom" value="atom" position="0 1 0" wrap-count=60 color="#000"></a-text>
+        <a-box create-periodic-table id="menu" visible="true" height="2" width="2" depth="0.1" color="#EF2D5E" opacity = "0.2" position="0 1 -4">
+            <a-text id="atom" value="atom" position="0 1 0" wrap-count=60 color="#000"></a-text>
             <a-text create-bond-on-click id="bond" value="bond" position="0 0.1 0" wrap-count=60 color="#000"></a-text>
         </a-box>
         <a-plane position="0 0 -4" rotation="-70 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
