@@ -1,9 +1,3 @@
-var hideMenu = function () {
-  var scene = document.querySelector('a-scene');
-  var menu = document.querySelector('#menu');
-  scene.removeChild(menu);
-}
-
 AFRAME.registerComponent('atom', {
   schema: {
     sym: {type: 'string'},
@@ -23,22 +17,24 @@ AFRAME.registerComponent('atom', {
 
     el.setAttribute('class', 'atom');
 
-    // let pos = el.object3D.position.x + ' ' + el.object3D.position.y + ' ' + (el.object3D.position.z);
-    // let rota = '0 ' + (180/Math.PI * (2*Math.PI - Math.atan(el.object3D.position.z/el.object3D.position.x))) + ' 0';
-    let html = '<a-text value="' + data.sym + '" align="center" color="#000" position="0 0 ' + data.radius +'" wrap-count="40"></a-text>';
-    el.innerHTML = html;
+    this.i_hear_click_fn = function () {
+      if (selected) {
+        selected = false;
+        el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: ' + defaultColor);
+      }
+    };
 
     this.click_fn = function () {
       if (selected) {
         selected = false;
         el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: ' + defaultColor);
-        hideMenu();
       } else {
         document.querySelectorAll('.atom').forEach(function(atom) {
           atom.emit('i_hear_click');
         });
         selected = true;
         el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: #ffff00');
+<<<<<<< HEAD
         this.createTable = function() {
           this.createNewMenu = function () {
             var scene = document.querySelector('a-scene');
@@ -142,6 +138,8 @@ AFRAME.registerComponent('atom', {
 
           // el.addEventListener('click', hideMenu);
         }();
+=======
+>>>>>>> 99eaa712a55163d2406f2c6fe148bcd8f9a6a7b4
       }
     };
 
@@ -152,12 +150,8 @@ AFRAME.registerComponent('atom', {
     el.addEventListener('mouseenter', function () {
       el.setAttribute('scale', '1.1 1.1 1.1');
     });
-    el.addEventListener('i_hear_click', function () {
-      if (selected) {
-        selected = false;
-        el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: ' + defaultColor);
-        hideMenu();
-      }
+    el.addEventListener('mouseleave', function () {
+      el.setAttribute('scale', '1 1 1');
     });
     //el.addEventListener('click', this.click_fn);
     //el.addEventListener('i_hear_click', this.i_hear_click_fn);
