@@ -46,6 +46,9 @@ AFRAME.registerComponent('atom', {
         selected = true;
         el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: #ffff00');
         this.createTable = function() {
+          if (document.querySelector('#menu') != null) {
+            hideMenu();
+          }
           this.createNewMenu = function () {
             var scene = document.querySelector('a-scene');
             var menu = document.createElement('a-box');
