@@ -75,7 +75,7 @@ AFRAME.registerComponent('create-atom-buttons', {
             elem4.appendChild(entityO);
 
             var elem5 = document.createElement('a-box');
-            elem5.setAttribute('create-atom-on-click', 'sym: Cl; radius: 0.7; color: #AAA');
+            elem5.setAttribute('create-atom-on-click', 'sym: Cl; radius: 0.3; color: #AAA');
             elem5.setAttribute('position', '0 0 0');
             elem5.setAttribute('depth', '0.1');
             elem5.setAttribute('color', '#F6E837');

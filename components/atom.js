@@ -28,13 +28,7 @@ AFRAME.registerComponent('atom', {
     let html = '<a-text value="' + data.sym + '" align="center" color="#000" position="0 0 ' + data.radius +'" wrap-count="40"></a-text>';
     el.innerHTML = html;
 
-    el.addEventListener('mouseenter', function () {
-      el.setAttribute('scale', '1.1 1.1 1.1');
-    });
-    el.addEventListener('mouseleave', function () {
-      el.setAttribute('scale', '1 1 1');
-    });
-    el.addEventListener('click', function () {
+    this.click_fn = function () {
       if (selected) {
         selected = false;
         el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: ' + defaultColor);
@@ -149,6 +143,14 @@ AFRAME.registerComponent('atom', {
           // el.addEventListener('click', hideMenu);
         }();
       }
+    };
+
+    // let pos = el.object3D.position.x + ' ' + el.object3D.position.y + ' ' + (el.object3D.position.z);
+    let html = '<a-text value="' + data.sym + '" align="center" color="#000" position="0 0 ' + data.radius +'" wrap-count="40"></a-text>';
+    el.innerHTML = html;
+
+    el.addEventListener('mouseenter', function () {
+      el.setAttribute('scale', '1.1 1.1 1.1');
     });
     el.addEventListener('i_hear_click', function () {
       if (selected) {
@@ -157,6 +159,8 @@ AFRAME.registerComponent('atom', {
         hideMenu();
       }
     });
+    //el.addEventListener('click', this.click_fn);
+    //el.addEventListener('i_hear_click', this.i_hear_click_fn);
   },
   update: function (oldData) {
     // console.log(document.querySelector('a-camera').object3D.position.y);

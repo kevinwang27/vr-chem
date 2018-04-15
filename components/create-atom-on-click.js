@@ -14,7 +14,22 @@ AFRAME.registerComponent('create-atom-on-click', {
           var entity = document.createElement('a-entity');
           entity.setAttribute('drop-atom-on-click', 'sym: ' + data.sym +'; radius: ' + data.radius + '; color: ' + data.color);
           entity.setAttribute('atom', 'sym: ' + data.sym +'; radius: ' + data.radius + '; color: ' + data.color);
+          entity.setAttribute('aabb-collider', 'objects: a-cylinder');
+          entity.setAttribute('id', 'atom');
           entity.setAttribute('position', '0 0 -3');
+
+          var intersecting_bond;
+          entity.addEventListener('hitstart', function () {
+            intersecting_bond = entity.components['aabb-collider']['closestIntersectedEl'];
+            entity.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: #00FF00');
+            intersecting_bond.setAttribute('color', '#00FF00');
+          });
+  
+          entity.addEventListener('hitend', function () {
+            entity.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: #AAA');
+            intersecting_bond.setAttribute('color', '#AAA');
+          });
+
           camera.appendChild(entity);
         }
 
