@@ -21,7 +21,7 @@ AFRAME.registerComponent('drop-bond-on-click', {
         var scene = document.querySelector('a-scene');
         var menu = document.createElement('a-box');
         menu.setAttribute('create-bond-on-click', '');
-        menu.setAttribute('id', 'bond-menu');
+        menu.setAttribute('id', 'menu');
         menu.setAttribute('height', '2');
         menu.setAttribute('width', '2');
         menu.setAttribute('depth', '0.1');
