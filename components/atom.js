@@ -1,3 +1,9 @@
+var hideMenu = function () {
+  var scene = document.querySelector('a-scene');
+  var menu = document.querySelector('#menu');
+  scene.removeChild(menu);
+}
+
 AFRAME.registerComponent('atom', {
   schema: {
     sym: {type: 'string'},
@@ -17,17 +23,22 @@ AFRAME.registerComponent('atom', {
 
     el.setAttribute('class', 'atom');
 
-    this.i_hear_click_fn = function () {
-      if (selected) {
-        selected = false;
-        el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: ' + defaultColor);
-      }
-    };
+    // let pos = el.object3D.position.x + ' ' + el.object3D.position.y + ' ' + (el.object3D.position.z);
+    // let rota = '0 ' + (180/Math.PI * (2*Math.PI - Math.atan(el.object3D.position.z/el.object3D.position.x))) + ' 0';
+    let html = '<a-text value="' + data.sym + '" align="center" color="#000" position="0 0 ' + data.radius +'" wrap-count="40"></a-text>';
+    el.innerHTML = html;
 
-    this.click_fn = function () {
+    el.addEventListener('mouseenter', function () {
+      el.setAttribute('scale', '1.1 1.1 1.1');
+    });
+    el.addEventListener('mouseleave', function () {
+      el.setAttribute('scale', '1 1 1');
+    });
+    el.addEventListener('click', function () {
       if (selected) {
         selected = false;
         el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: ' + defaultColor);
+        hideMenu();
       } else {
         document.querySelectorAll('.atom').forEach(function(atom) {
           atom.emit('i_hear_click');
@@ -41,8 +52,8 @@ AFRAME.registerComponent('atom', {
             menu.setAttribute('create-atom-buttons', '');
             menu.setAttribute('create-bond-buttons', '');
             menu.setAttribute('id', 'menu');
-            menu.setAttribute('height', '5.2');
-            menu.setAttribute('width', '4.5');
+            menu.setAttribute('height', '5');
+            menu.setAttribute('width', '3');
             menu.setAttribute('depth', '0.1');
             menu.setAttribute('color', '#EF2D5E');
             menu.setAttribute('opacity', '0.2');
@@ -138,20 +149,14 @@ AFRAME.registerComponent('atom', {
           // el.addEventListener('click', hideMenu);
         }();
       }
-    };
-
-    // let pos = el.object3D.position.x + ' ' + el.object3D.position.y + ' ' + (el.object3D.position.z);
-    let html = '<a-text value="' + data.sym + '" align="center" color="#000" position="0 0 ' + data.radius +'" wrap-count="40"></a-text>';
-    el.innerHTML = html;
-
-    el.addEventListener('mouseenter', function () {
-      el.setAttribute('scale', '1.1 1.1 1.1');
     });
-    el.addEventListener('mouseleave', function () {
-      el.setAttribute('scale', '1 1 1');
+    el.addEventListener('i_hear_click', function () {
+      if (selected) {
+        selected = false;
+        el.setAttribute('atom', 'sym: ' + data.sym + '; radius: ' + data.radius + '; color: ' + defaultColor);
+        hideMenu();
+      }
     });
-    //el.addEventListener('click', this.click_fn);
-    //el.addEventListener('i_hear_click', this.i_hear_click_fn);
   },
   update: function (oldData) {
     // console.log(document.querySelector('a-camera').object3D.position.y);
